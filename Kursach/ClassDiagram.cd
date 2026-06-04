@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Bread">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAABAAAAAAgAAAAAgAAAAAAAAAAAAAGAAAAA=</HashCode>
+      <FileName>Bread.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Milk">
+    <Position X="11.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAgAACAAAAAAAAAAAAAAAACAAAAAAAAEAAAoA=</HashCode>
+      <FileName>Milk.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Product">
+    <Position X="12" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAACAgAAAABABAAAAAEgAAgAAAEAEAAAAg=</HashCode>
+      <FileName>Product.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProductFood">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAQAAAQAAAEAAAABAAAAAAAAEAAUAA=</HashCode>
+      <FileName>ProductFood.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shelf">
+    <Position X="14.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAIQCAJAAAAgAAAIQKAAQAgAACIABAAAIAAwAAIAAA=</HashCode>
+      <FileName>Shelf.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserInterface">
+    <Position X="16" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>UserInterface.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Yogurt">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAgAAAEAAAAAAAAAAAAIAAAAEAAAAAAEAAAAA=</HashCode>
+      <FileName>Yogurt.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

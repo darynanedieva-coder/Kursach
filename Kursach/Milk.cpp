@@ -23,10 +23,10 @@ Milk::Milk(const string& nameMilk,
     packageType(packageType)
 {
     if (weight < 0) {
-        throw invalid_argument("The weight of the bread cannot be negative.");
+        throw invalid_argument("The weight of the milk cannot be negative.");
     }
     if (price < 0) {
-        throw invalid_argument("The price of bread cannot be negative.");
+        throw invalid_argument("The price of milk cannot be negative.");
     }
     if (amountCalories < 0) {
         throw invalid_argument("Calories cannot be negative.");
