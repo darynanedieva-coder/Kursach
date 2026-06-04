@@ -52,7 +52,7 @@ void UserInterface::SystemMenu() {
                 cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
                 cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
                 cout << "Inject the fat content of the yogurt (0% to 10%) :\n"; cin >> fat;
-                cout << "Inject the yogurt filling (strawberry, apple and other fruit):\n"; 
+                cout << "Inject the yogurt filling (strawberry, apple and other fruit):\n";
                 cout << "Enter the inside of the yogurt:\n";  cin.ignore(); getline(cin, inside);
                 cout << "Free places on the shelf: " << shelf.getCapacity() << ".\n";
                 cout << "Product quantity:\n"; cin >> amount;
