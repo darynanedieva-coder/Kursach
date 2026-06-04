@@ -28,7 +28,10 @@ public:
     int getWeight() const { return weight; }
     int getPrice() const { return price; }
 
-    virtual string Info() const;
+    virtual string Info() const = 0;
+
+protected:
+    string formatBaseInfo() const;
 };
 
 #endif //CURSOVAYA_PRODUCT_H

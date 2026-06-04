@@ -14,7 +14,6 @@ Shelf::~Shelf() {
     }
 }
 
-// Додати продукт
 void Shelf::addProductFood(const ProductFood* product, int count) {
     if (count < 0) {
         throw invalid_argument("You cannot add a negative quantity.");
@@ -22,13 +21,11 @@ void Shelf::addProductFood(const ProductFood* product, int count) {
     if (count > capacity) {
         throw invalid_argument("There is not enough space on the shelf.");
     }
-    for (int i = 0; i < count; i++) {
-        vecAmountProduct.push_back(product);
-        capacity--;
-    }
+    vecAmountProduct.push_back(product);
+    capacity--;
 }
 
-// Видалити прострочені продукти
+// Виделення прострочених продуктів
 void Shelf::loseShelfLifeProductFood(const string& date) {
     if (vecAmountProduct.size() == 0) {
         cout << "There are no products on the shelf" << endl;
@@ -58,7 +55,7 @@ void Shelf::sortProductPriceAscending() {
         cout << "There are no products on the shelf. Unable to sort." << endl;
         return;
     }
-    int n = vecAmountProduct.size();
+    int n = static_cast<int>(vecAmountProduct.size());
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (vecAmountProduct[j]->getPrice() > vecAmountProduct[j + 1]->getPrice()) {
@@ -77,7 +74,7 @@ void Shelf::sortProductPriceDescending() {
         cout << "There are no products on the shelf. Unable to sort." << endl;
         return;
     }
-    int n = vecAmountProduct.size();
+    int n = static_cast<int>(vecAmountProduct.size());
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (vecAmountProduct[j]->getPrice() < vecAmountProduct[j + 1]->getPrice()) {
@@ -90,7 +87,7 @@ void Shelf::sortProductPriceDescending() {
     cout << "Products are sorted (from expensive to cheap)." << endl;
 }
 
-// Купити один продукт за назвою
+// Купівля одного продукту за назвою
 void Shelf::buyProduct(const string& name) {
     if (vecAmountProduct.empty()) {
         cout << "There are no products on the shelf." << endl;
@@ -111,7 +108,7 @@ void Shelf::buyProduct(const string& name) {
         cout << "You bought " << name << "." << endl;
     }
     else {
-        cout << "Product '" << name << "Not found." << endl;
+        cout << "Product '" << name << "' not found." << endl;
     }
 }
 
@@ -171,5 +168,3 @@ void Shelf::printProductFood() {
         }
     }
 }
-
-

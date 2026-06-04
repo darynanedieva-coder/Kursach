@@ -17,13 +17,9 @@ Product::Product(const string& name,
     price(price) {
 }
 
-string Product::Info() const {
-    string out;
-
-    out = "Name: " + getName() + "." +
+string Product::formatBaseInfo() const {
+    return "Name: " + getName() + "." +
         " Produced " + getProduceDate() +
         " Weight: " + to_string(getWeight()) + "(g)" +
         " Price " + to_string(getPrice()) + "$";
-
-    return out;
 }

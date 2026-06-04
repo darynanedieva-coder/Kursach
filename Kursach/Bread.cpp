@@ -1,5 +1,6 @@
 #include "Bread.h"
 
+
 Bread::Bread() : flourType("wheat"), isWholeGrain(false) {}
 
 
@@ -15,7 +16,6 @@ Bread::Bread(const string& name,
     flourType(flourType),
     isWholeGrain(isWholeGrain) {
 
-    // Перевірки
     if (weight < 0) {
         throw invalid_argument("The weight of the bread cannot be negative.");
     }
@@ -31,7 +31,7 @@ string Bread::Info() const {
     string result;
     result = ProductFood::Info() +
         " Flour type: " + flourType +
-        " Wholmeal: ";
+        " Wholemeal: ";
     if (isWholeGrain)
         result = result + "Yes";
     else

@@ -43,4 +43,3 @@ public:
 
 
 #endif //CURSOVAYA_SHELF_H
-#pragma once

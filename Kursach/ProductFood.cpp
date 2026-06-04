@@ -35,7 +35,7 @@ bool ProductFood::dateComparison(const string& ProduceDate, const string& ShelfL
     int shelfLife = convertDate(ShelfLife);
 
     if (produceDate > shelfLife) {
-        throw invalid_argument("You have entered a production date less than the expiration date. This cannot be.");
+        throw invalid_argument("Production date cannot be later than the expiration date.");
     }
     return true;
 }
@@ -50,7 +50,7 @@ bool ProductFood::isShelfLifeGood(const string& currentDate) const {
 string ProductFood::Info() const {
     string out;
 
-    out = Product::Info() +
+    out = formatBaseInfo() +
         " Ends " + getShelfLife() +
         " Calories : " + to_string(getAmountCalories()) + " call";
 

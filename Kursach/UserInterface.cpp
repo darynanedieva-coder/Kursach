@@ -1,13 +1,16 @@
 #include "UserInterface.h"
 
+#include <cstdlib>
+#include <iostream>
+
 void UserInterface::SystemMenu() {
-    int weight, fat, price, amountCalories, amount, gain, selection, isWholeGrain;
-    string name, inside, packageType, produceDate, todayDate, shelfLife, flourType;
+    int weight, fat, price, amountCalories, amount, gain, selection;
+    double milkFat;
+    string name, inside, packageType, produceDate, shelfLife, flourType;
     string CurrentDate = "27/05/2026";
     Yogurt* yogurt;
     Milk* milk;
     Bread* bread;
-    ProductFood productFood;
     Shelf shelf;
 
 
@@ -19,18 +22,17 @@ void UserInterface::SystemMenu() {
             "|=========================================|\n"
             "| 1. Yogurt.                              |\n"
             "| 2. Milk.                                |\n"
-            "| 3. Bred.                                |\n"
+            "| 3. Bread.                               |\n"
             "|=========================================|\n"
             "| Select operation:                       |\n"
             "|=========================================|\n"
             "| 4. Expiry date check.                   |\n"
             "| 5. Sorting products on the shelf.       |\n"
-            "| 6. Buy goods                            |\n"
-            "| 7. Revenue from sold goods.             |\n"
+            "| 6. Buy products                         |\n"
+            "| 7. Revenue from sold products .         |\n"
             "| 8. Checking the product for integrity.  |\n"
-            "| 9. Taking goods to the shelf.           |\n"
-            "|=========================================|\n"
-            "| 10. Shelf information.                  |\n"
+            "| 9. Products on the shelf.               |\n"
+            "| 10. Shelf capacity.                     |\n"
             "| 11. Exit from the program.              |\n"
             "| Today's date "; cout << CurrentDate; cout << "                 |\n";
         cout << "|=========================================|\n"
@@ -44,18 +46,26 @@ void UserInterface::SystemMenu() {
             try {
                 cout << "You chose yogurt, let's add it to the shelf.\n";
                 cout << "Enter yogurt name:\n"; cin.ignore(); getline(cin, name);
-                cout << "Add the production date as (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, produceDate);
+                cout << "Add the production date as (DD/MM/YYYY):\n"; getline(cin, produceDate);
                 cout << "Enter weight in grams (not less than 0):\n"; cin >> weight;
-                cout << "Enter price (UAH):\n"; cin >> price;
+                cout << "Enter price $:\n"; cin >> price;
                 cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
                 cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
                 cout << "Inject the fat content of the yogurt (0% to 10%) :\n"; cin >> fat;
-                cout << "Inject the yogurt filling (strawberry, apple and other fruit):\n"; cin.ignore(); getline(cin, inside);
+                cout << "Inject the yogurt filling (strawberry, apple and other fruit):\n"; 
+                cout << "Enter the inside of the yogurt:\n";  cin.ignore(); getline(cin, inside);
                 cout << "Free places on the shelf: " << shelf.getCapacity() << ".\n";
                 cout << "Product quantity:\n"; cin >> amount;
 
-                yogurt = new Yogurt(name, produceDate, weight, price, shelfLife, amountCalories, fat, inside);
-                shelf.addProductFood(yogurt, amount);
+                if (amount > shelf.getCapacity()) {
+                    cout << "There is not enough space on the shelf.\n";
+                    break;
+                }
+
+                for (int i = 0; i < amount; i++) {
+                    yogurt = new Yogurt(name, produceDate, weight, price, shelfLife, amountCalories, fat, inside);
+                    shelf.addProductFood(yogurt, 1);
+                }
                 if (amount > 1) {
                     cout << " " << amount << " yogurts have been added to the shelf.\n";
                 }
@@ -71,19 +81,26 @@ void UserInterface::SystemMenu() {
             try {
                 cout << "You have selected milk, we will add it to the shelf.\n";
                 cout << "Enter the name of the milk:\n"; cin.ignore(); getline(cin, name);
-                cout << "Add the production date as (DD/MM/YYYY): \n"; cin.ignore(); getline(cin, produceDate);
+                cout << "Add the production date as (DD/MM/YYYY): \n"; getline(cin, produceDate);
                 cout << "Enter weight in grams (not less than 0):\n"; cin >> weight;
-                cout << "Enter price (UAH):\n"; cin >> price;
+                cout << "Enter price $:\n"; cin >> price;
                 cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
                 cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
-                cout << "Enter the fat content of the milk (from 0% to 4%) t:\n"; cin >> fat;
+                cout << "Enter the fat content of the milk (from 0% to 4%):\n"; cin >> milkFat;
                 cout << "Enter the type of packaging (Bottle, pure pack, pillow):\n"; cin.ignore(); getline(cin, packageType);
                 cout << "Free places on the shelf: " << shelf.getCapacity() << ".\n";
                 cout << "Product quantity:\n"; cin >> amount;
 
-                milk = new Milk(name, produceDate, weight, price, shelfLife, amountCalories, fat, packageType);
-                shelf.addProductFood(milk, amount);
-                cout << " " << amount << "  " "milk" << packageType << " were added to the shelf.\n";
+                if (amount > shelf.getCapacity()) {
+                    cout << "There is not enough space on the shelf.\n";
+                    break;
+                }
+
+                for (int i = 0; i < amount; i++) {
+                    milk = new Milk(name, produceDate, weight, price, shelfLife, amountCalories, milkFat, packageType);
+                    shelf.addProductFood(milk, 1);
+                }
+                cout << " " << amount << " milk (" << packageType << ") were added to the shelf.\n";
             }
             catch (exception& ex) {
                 cout << ex.what() << endl;
@@ -92,21 +109,28 @@ void UserInterface::SystemMenu() {
         case 3:
             try {
                 cout << "You chose bread, let's add it to the shelf.\n";
-                cout << "Enter the name of the bread:\n"; cin.ignore(); getline(cin, name);;
-                cout << "Add the production date as (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, produceDate);
+                cout << "Enter the name of the bread:\n"; cin.ignore(); getline(cin, name);
+                cout << "Add the production date as (DD/MM/YYYY):\n"; getline(cin, produceDate);
                 cout << "Enter weight in grams (not less than 0):\n"; cin >> weight;
-                cout << "Enter price (UAH):\n"; cin >> price;
-                cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);;
-                cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;;
-                cout << "Ведіть тип борошна (пшеничне, житнє, гречане):\n"; cin.ignore(); getline(cin, flourType);
-                cout << "Введіть якщо він цільнозерновий - 1, якщо ні - 0.\n"; int wholeGrainInt;
+                cout << "Enter price $:\n"; cin >> price;
+                cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
+                cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
+                cout << "Enter the type of flour (wheat, rye, buckwheat)):\n"; cin.ignore(); getline(cin, flourType);
+                cout << "Enter 1 if whole grain, if not 0.\n"; int wholeGrainInt;
                 cin >> wholeGrainInt;
                 bool isWholeGrain = (wholeGrainInt == 1);
                 cout << "Free places on the shelf: " << shelf.getCapacity() << ".\n";
                 cout << "product quantity:\n"; cin >> amount;
 
-                bread = new Bread(name, produceDate, weight, price, shelfLife, amountCalories, flourType, isWholeGrain);
-                shelf.addProductFood(bread, amount);
+                if (amount > shelf.getCapacity()) {
+                    cout << "There is not enough space on the shelf.\n";
+                    break;
+                }
+
+                for (int i = 0; i < amount; i++) {
+                    bread = new Bread(name, produceDate, weight, price, shelfLife, amountCalories, flourType, isWholeGrain);
+                    shelf.addProductFood(bread, 1);
+                }
                 cout << " Added " << amount << " bread loaf.\n";
             }
             catch (exception& ex) {
@@ -169,7 +193,7 @@ void UserInterface::SystemMenu() {
                 cout << " You have not sold any products." << "\n";
             }
             else {
-                cout << " You sold products worth " << shelf.getAmountMoney() << "  UAH\n";
+                cout << " You sold products worth " << shelf.getAmountMoney() << " $\n";
             }
             break;
         case 8:
@@ -201,8 +225,8 @@ void UserInterface::SystemMenu() {
             break;
         case 10:
             do {
-                cout << "\nYou can increase the number of shelf spaces by clicking - 1.\n";
-                "You can reduce the number of shelf spaces by clicking - 2.\n"
+                cout << "\nYou can increase the number of shelf spaces by clicking - 1.\n"
+                    "You can reduce the number of shelf spaces by clicking - 2.\n"
                     "You can view the standard number of shelf slots by clicking - 3.\n"
                     "You can exit by clicking - 4.\n"
                     "\nEnter your choice:\n"; cin >> selection;

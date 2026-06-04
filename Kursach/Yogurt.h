@@ -24,5 +24,4 @@ public:
     string Info() const override;
 };
 
-
 #endif //CURSOVAYA_YOGURT_H
