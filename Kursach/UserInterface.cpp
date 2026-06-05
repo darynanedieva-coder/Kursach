@@ -194,7 +194,7 @@ void UserInterface::SystemMenu() {
                 cout << " You have not sold any products." << "\n";
             }
             else {
-                cout << " You sold products worth " << shelf.getAmountMoney() << " $\n";
+                cout << " You sold products worth " << shelf.getAmountMoney() << " UAH\n";
             }
             break;
         case 8:
