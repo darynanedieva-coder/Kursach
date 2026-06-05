@@ -10,7 +10,7 @@ Yogurt::Yogurt(const string& nameYogurt,
     int price,
     const string& shelfLife,
     int amountCalories,
-    int fat,
+    double fat,
     string inside)
     : ProductFood(nameYogurt, produceDate, weight, price, shelfLife, amountCalories),
     fat(fat),

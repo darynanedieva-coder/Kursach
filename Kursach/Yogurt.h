@@ -5,7 +5,7 @@
 
 class Yogurt : public ProductFood {
 private:
-    int fat;
+    double fat;
     string inside;
 public:
     Yogurt();
@@ -15,10 +15,10 @@ public:
         int price,
         const string& shelfLife,
         int amountCalories,
-        int fat,
+        double fat,
         string inside);
 
-    int getFat() const { return fat; }
+    double getFat() const { return fat; }
     string getInside() const { return inside; }
 
     string Info() const override;

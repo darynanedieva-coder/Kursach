@@ -21,5 +21,5 @@ string Product::formatBaseInfo() const {
     return "Name: " + getName() + "." +
         " Produced " + getProduceDate() +
         " Weight: " + to_string(getWeight()) + "(g)" +
-        " Price " + to_string(getPrice()) + "$";
+        " Price " + to_string(getPrice()) + " UAH";
 }

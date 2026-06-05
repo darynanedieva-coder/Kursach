@@ -4,8 +4,9 @@
 #include <iostream>
 
 void UserInterface::SystemMenu() {
-    int weight, fat, price, amountCalories, amount, gain, selection;
+    int weight, price, amountCalories, amount, gain, selection;
     double milkFat;
+    double fatYogurt;
     string name, inside, packageType, produceDate, shelfLife, flourType;
     string CurrentDate = "27/05/2026";
     Yogurt* yogurt;
@@ -48,10 +49,10 @@ void UserInterface::SystemMenu() {
                 cout << "Enter yogurt name:\n"; cin.ignore(); getline(cin, name);
                 cout << "Add the production date as (DD/MM/YYYY):\n"; getline(cin, produceDate);
                 cout << "Enter weight in grams (not less than 0):\n"; cin >> weight;
-                cout << "Enter price $:\n"; cin >> price;
+                cout << "Enter price UAH:\n"; cin >> price;
                 cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
                 cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
-                cout << "Inject the fat content of the yogurt (0% to 10%) :\n"; cin >> fat;
+                cout << "Inject the fat content of the yogurt (0% to 10%) :\n"; cin >> fatYogurt;
                 cout << "Inject the yogurt filling (strawberry, apple and other fruit):\n";
                 cout << "Enter the inside of the yogurt:\n";  cin.ignore(); getline(cin, inside);
                 cout << "Free places on the shelf: " << shelf.getCapacity() << ".\n";
@@ -63,7 +64,7 @@ void UserInterface::SystemMenu() {
                 }
 
                 for (int i = 0; i < amount; i++) {
-                    yogurt = new Yogurt(name, produceDate, weight, price, shelfLife, amountCalories, fat, inside);
+                    yogurt = new Yogurt(name, produceDate, weight, price, shelfLife, amountCalories, fatYogurt, inside);
                     shelf.addProductFood(yogurt, 1);
                 }
                 if (amount > 1) {
@@ -83,7 +84,7 @@ void UserInterface::SystemMenu() {
                 cout << "Enter the name of the milk:\n"; cin.ignore(); getline(cin, name);
                 cout << "Add the production date as (DD/MM/YYYY): \n"; getline(cin, produceDate);
                 cout << "Enter weight in grams (not less than 0):\n"; cin >> weight;
-                cout << "Enter price $:\n"; cin >> price;
+                cout << "Enter price UAH:\n"; cin >> price;
                 cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
                 cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
                 cout << "Enter the fat content of the milk (from 0% to 4%):\n"; cin >> milkFat;
@@ -112,7 +113,7 @@ void UserInterface::SystemMenu() {
                 cout << "Enter the name of the bread:\n"; cin.ignore(); getline(cin, name);
                 cout << "Add the production date as (DD/MM/YYYY):\n"; getline(cin, produceDate);
                 cout << "Enter weight in grams (not less than 0):\n"; cin >> weight;
-                cout << "Enter price $:\n"; cin >> price;
+                cout << "Enter price UAH:\n"; cin >> price;
                 cout << "Enter the expiration date (DD/MM/YYYY):\n"; cin.ignore(); getline(cin, shelfLife);
                 cout << "Enter the number of calories (kcal) at least 0:\n"; cin >> amountCalories;
                 cout << "Enter the type of flour (wheat, rye, buckwheat)):\n"; cin.ignore(); getline(cin, flourType);
