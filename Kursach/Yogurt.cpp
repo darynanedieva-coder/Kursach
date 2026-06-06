@@ -7,7 +7,7 @@ Yogurt::Yogurt() : fat(6), inside("Strawberry") {}
 Yogurt::Yogurt(const string& nameYogurt,
     const string& produceDate,
     int weight,
-    int price,
+    double price,
     const string& shelfLife,
     int amountCalories,
     double fat,
@@ -35,9 +35,9 @@ Yogurt::Yogurt(const string& nameYogurt,
 }
 
 string Yogurt::Info() const {
-    string result;
-    result = ProductFood::Info() +
-        " Fat: " + to_string(fat) + "%" +
+    stringstream ss;
+    ss << fat;
+    return ProductFood::Info() +
+        " Fat: " + ss.str() + "%" +
         " Filler: " + inside;
-    return result;
 }

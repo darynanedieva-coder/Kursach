@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-
 #include "ProductFood.h"
 
 using namespace std;
@@ -14,7 +13,7 @@ class Shelf {
 private:
     int capacity;
     int damage;
-    int amountMoney;
+    double amountMoney;
     vector<const ProductFood*> vecAmountProduct;
 
 public:
@@ -22,10 +21,10 @@ public:
     ~Shelf();
 
     int getCapacity() const { return capacity; }
-    int getAmountMoney() const { return amountMoney; }
+    double getAmountMoney() const { return amountMoney; }
     int getDamageProduct() const { return damage; }
 
-    void sumPrice(int gain) { amountMoney += gain; }
+    void sumPrice(double gain) { amountMoney += gain; }
 
     void setCapacityIncrease(int gain) { capacity += gain; }
     void setCapacityReduce(int gain) { capacity -= gain; }
@@ -40,6 +39,5 @@ public:
     void checkAllIntegrity();
     void printProductFood();
 };
-
 
 #endif //CURSOVAYA_SHELF_H

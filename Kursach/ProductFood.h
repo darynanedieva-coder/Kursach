@@ -12,7 +12,7 @@ public:
     ProductFood(const string& name,
         const string& produceDate,
         int weight,
-        int price,
+        double price,
         const string& shelfLife,
         int amountCalories);
 

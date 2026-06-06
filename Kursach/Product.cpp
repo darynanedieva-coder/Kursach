@@ -4,13 +4,13 @@ Product::Product() :
     name("Normal"),
     produceDate("DD/MM/YYYY"),
     weight(0),
-    price(0) {
+    price(0.0) {
 }
 
 Product::Product(const string& name,
     const string& produceDate,
     int weight,
-    int price) :
+    double price) :
     name(name),
     produceDate(produceDate),
     weight(weight),
@@ -18,8 +18,10 @@ Product::Product(const string& name,
 }
 
 string Product::formatBaseInfo() const {
+    stringstream ss;
+    ss << getPrice();
     return "Name: " + getName() + "." +
         " Produced " + getProduceDate() +
-        " Weight: " + to_string(getWeight()) + "(g)" +
-        " Price " + to_string(getPrice()) + " UAH";
+        " Weight: " + to_string(getWeight()) + "(g) " +
+        " Price " + ss.str() + " UAH";
 }

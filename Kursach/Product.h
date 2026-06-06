@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <sstream>
 
 using namespace std;
 
@@ -12,21 +13,21 @@ private:
     string name;
     string produceDate;
     int weight;
-    int price;
+    double price;
 
 public:
     Product();
     Product(const string& name,
         const string& produceDate,
         int weight,
-        int price);
+        double price);
 
     virtual ~Product() {}
 
     const string& getName() const { return name; }
     const string& getProduceDate() const { return produceDate; }
     int getWeight() const { return weight; }
-    int getPrice() const { return price; }
+    double getPrice() const { return price; }
 
     virtual string Info() const = 0;
 

@@ -7,7 +7,7 @@ Bread::Bread() : flourType("wheat"), isWholeGrain(false) {}
 Bread::Bread(const string& name,
     const string& produceDate,
     int weight,
-    int price,
+    double price,
     const string& shelfLife,
     int amountCalories,
     string flourType,

@@ -12,7 +12,7 @@ public:
     Yogurt(const string& nameYogurt,
         const string& produceDate,
         int weight,
-        int price,
+        double price,
         const string& shelfLife,
         int amountCalories,
         double fat,

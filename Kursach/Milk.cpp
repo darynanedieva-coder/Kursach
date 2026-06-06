@@ -1,8 +1,5 @@
 #include "Milk.h"
-#include <stdexcept>
-#include <string>
-
-using namespace std;
+#include <sstream>
 
 Milk::Milk() :
     ProductFood(),
@@ -13,15 +10,14 @@ Milk::Milk() :
 Milk::Milk(const string& nameMilk,
     const string& produceDateMilk,
     int weight,
-    int price,
+    double price,
     const string& shelfLifeMilk,
     int amountCalories,
     double fat,
     string packageType) :
     ProductFood(nameMilk, produceDateMilk, weight, price, shelfLifeMilk, amountCalories),
     fat(fat),
-    packageType(packageType)
-{
+    packageType(packageType) {
     if (weight < 0) {
         throw invalid_argument("The weight of the milk cannot be negative.");
     }
@@ -36,11 +32,7 @@ Milk::Milk(const string& nameMilk,
     }
     if (fat > 4) {
         throw invalid_argument("You have indicated that the fat content in milk exceeds 4%");
-
-   
     }
-
-
 }
 
 void Milk::setFat(double newFat) {
@@ -48,15 +40,12 @@ void Milk::setFat(double newFat) {
         throw invalid_argument("The fat content should be between 0% and 4%");
     }
     fat = newFat;
-
 }
 
 string Milk::Info() const {
-    string out;
-
-    out = ProductFood::Info() +
-        " Fat: " + to_string(getFat()) + "%" +
-        " PackageType: " + getPackageType();
-
-    return out;
+    stringstream ss;
+    ss << fat;
+    return ProductFood::Info() +
+        " Fat: " + ss.str() + "%" +
+        " PackageType: " + packageType;
 }

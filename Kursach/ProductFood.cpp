@@ -8,7 +8,7 @@ ProductFood::ProductFood() :
 ProductFood::ProductFood(const string& name,
     const string& produceDate,
     int weight,
-    int price,
+    double price,
     const string& shelfLife,
     int amountCalories) :
     Product(name, produceDate, weight, price),

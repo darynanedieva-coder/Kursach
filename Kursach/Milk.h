@@ -16,7 +16,7 @@ public:
     Milk(const string& nameMilk,
         const string& produceDate,
         int weight,
-        int price,
+        double price,
         const string& shelfLife,
         int amountCalories,
         double fat,

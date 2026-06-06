@@ -4,11 +4,12 @@
 #include <iostream>
 
 void UserInterface::SystemMenu() {
-    int weight, price, amountCalories, amount, gain, selection;
+    int weight, amountCalories, amount, gain, selection;
     double milkFat;
     double fatYogurt;
+    double price;
     string name, inside, packageType, produceDate, shelfLife, flourType;
-    string CurrentDate = "27/05/2026";
+    string CurrentDate = "06/06/2026";
     Yogurt* yogurt;
     Milk* milk;
     Bread* bread;
@@ -138,7 +139,6 @@ void UserInterface::SystemMenu() {
                 cout << ex.what() << endl;
             }
             break;
-
         case 4:
             cout << "Checking the shelf life of goods.\n";
             shelf.loseShelfLifeProductFood(CurrentDate);
@@ -150,7 +150,14 @@ void UserInterface::SystemMenu() {
                 cout << "\nYou can sort products in ascending order by clicking - 1.\n"
                     "You can sort products in descending order by clicking - 2.\n"
                     "You can exit by clicking - 3.\n"
-                    "\nEnter your choice:\n"; cin >> selection;
+                    "\nEnter your choice:\n";
+
+                if (!(cin >> selection)) {
+                    cout << "Invalid input! Please enter a number.\n";
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    continue;
+                }
                 switch (selection) {
                 case 1:
                     shelf.sortProductPriceAscending();
@@ -168,11 +175,19 @@ void UserInterface::SystemMenu() {
             break;
         case 6:
             cout << "In this subsection, you can purchase the product that is on the shelf.\n";
-            do {
+            while (selection != 3){
                 cout << "\nYou can buy a product by name by clicking - 1.\n"
                     "You can buy all products at once by clicking - 2.\n"
                     "You can exit by pressing - 3.\n"
-                    "\nEnter your choice:\n"; cin >> selection;
+                    "\nEnter your choice:\n";
+
+                if (!(cin >> selection)) {
+                    cout << "Invalid input! Please enter a number.\n";
+                    cin.clear();
+                    cin.ignore(10000, '\n'); 
+                    continue; 
+                }
+
                 switch (selection) {
                 case 1:
                     cout << "Enter product name:\n"; cin.ignore(); getline(cin, name);
@@ -185,9 +200,10 @@ void UserInterface::SystemMenu() {
                     cout << " You left case 6.\n";
                     break;
                 default:
-                    cout << "\n";
+                    cout << "You print wrong selection. Press any bottom to continue";
+                    break;
                 }
-            } while (selection != 3);
+            }
             break;
         case 7:
             if (shelf.getAmountMoney() == 0) {
@@ -203,7 +219,13 @@ void UserInterface::SystemMenu() {
                 cout << "\nYou can check the integrity of the product by name by clicking - 1.\n"
                     "You can check all products for integrity at once by clicking - 2.\n"
                     "You can exit by pressing - 3.\n"
-                    "\nEnter your choice:\n"; cin >> selection;
+                    "\nEnter your choice:\n";
+                if (!(cin >> selection)) {
+                    cout << "Invalid input! Please enter a number.\n";
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    continue;
+                }
                 switch (selection) {
                 case 1:
                     cout << "Enter the product name:\n"; cin.ignore(); getline(cin, name);
@@ -221,7 +243,7 @@ void UserInterface::SystemMenu() {
             } while (selection != 3);
             break;
         case 9:
-            cout << " Products on the shelf:\n";
+            cout << " Products on the shelfs:\n";
             shelf.printProductFood();
             break;
         case 10:
@@ -230,7 +252,13 @@ void UserInterface::SystemMenu() {
                     "You can reduce the number of shelf spaces by clicking - 2.\n"
                     "You can view the standard number of shelf slots by clicking - 3.\n"
                     "You can exit by clicking - 4.\n"
-                    "\nEnter your choice:\n"; cin >> selection;
+                    "\nEnter your choice:\n";
+                if (!(cin >> selection)) {
+                    cout << "Invalid input! Please enter a number.\n";
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    continue;
+                }
                 switch (selection) {
                 case 1:
                     cout << "Enter gain: " << "\n"; cin >> gain;
